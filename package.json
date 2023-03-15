@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "@adiwajshing/baileys": "^5.0.0",
+    "@hapi/boom": "^10.0.1",
+    "axios": "^1.3.4",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.0.3",
+    "pino": "^8.11.0",
+    "qrcode-terminal": "^0.12.0",
+    "typescript": "^4.9.5"
+  },
+  "name": "testing-bot",
+  "description": "Testing bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm cache clean -f && node ./dist/app.js",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.14.6",
+    "@types/qrcode-terminal": "^0.12.0"
+  }
+}
