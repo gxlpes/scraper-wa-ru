@@ -1,9 +1,5 @@
 import { WASocket } from "@adiwajshing/baileys";
-import { connectToWhatsApp } from "./connectToWhatsApp";
-import makeWASocket, { DisconnectReason, useMultiFileAuthState } from "@adiwajshing/baileys";
-import { Boom } from "@hapi/boom";
 import dotenv from "dotenv";
-import pino from "pino";
 
 dotenv.config();
 export const handlerWaBot = async (ru: string, output: any, sock: WASocket) => {

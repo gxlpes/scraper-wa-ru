@@ -1,7 +1,7 @@
 import * as cheerio from "cheerio";
 import { convertRuToName, convertRuToUrl } from "../utils/convertRu";
 
-export const extractContentFromHtml = (menuFromDate: cheerio.Element, date: string, ru: string) => {
+export const extractContentFromHtml = (menuFromDate: cheerio.Element, date: Date, ruName: string) => {
   const meal = ["CAFÉ DA MANHÃ", "ALMOÇO", "JANTAR"];
   const $menu = cheerio.load(menuFromDate);
   $menu("img").remove();
@@ -10,9 +10,9 @@ export const extractContentFromHtml = (menuFromDate: cheerio.Element, date: stri
 
   wholeObject["meals"] = meal;
   wholeObject["details"] = {
-    nameRu: convertRuToName(ru),
+    nameRu: ruName,
     date: date,
-    urlRu: convertRuToUrl(ru),
+    urlRu: convertRuToUrl(ruName),
   };
 
   meal.forEach((meal) => {

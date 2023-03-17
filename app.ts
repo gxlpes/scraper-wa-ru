@@ -13,19 +13,21 @@ export const startApp = async () => {
   for (const ru of arrayOfAttendedRu) {
     console.log(arrayOfAttendedRu);
     console.log("-------------------- starting procedure for:", ru);
+
     const response = await getDataFromWebsite(ru);
     console.log("returned website", response?.status);
+
     const htmlMenu = await getHtmlElements(response!.data, ru);
     console.log("returned selected html");
 
     if (htmlMenu === null) {
-      console.log(`No HTML elements found for ${ru}, skipping to next iteration`);
-      await handlerWaBot(ru, "Deu pau", sock);
+      console.log(`No menu from this date found for ${ru}, skipping to next iteration`);
       continue;
     }
 
     const output = await organizeData(htmlMenu);
     console.log("returned formatted data");
+
     await handlerWaBot(ru, output, sock);
     console.log("--------------------- finished this procedure");
   }

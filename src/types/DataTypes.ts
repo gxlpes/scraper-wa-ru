@@ -17,6 +17,6 @@ export interface MenuData {
 
 export interface Details {
   nameRu: string;
-  date: string;
+  date: Date;
   urlRu: string;
 }

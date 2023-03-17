@@ -2,15 +2,11 @@ import { MenuData } from "../types/DataTypes";
 import { getWeekday } from "../utils/getWeekday";
 import { returnFooterString, returnFormattedMeals, returnHeaderString, returnWarningString } from "./helpers/stringBuilder";
 
-export const organizeData = async ({ meals, breakfast, lunch, dinner, details }: MenuData) => {
-  const { date } = details;
-  const formattedDate = date.split("-").reverse().join("/");
-  const weekDayPt = getWeekday(new Date(`20${formattedDate.split("/").reverse().join("/")}`).getDay());
+export const organizeData = async ({ meals, breakfast, lunch, dinner, details, details: { date } }: MenuData) => {
+  const formattedDate = `${date.getDate()}/${String(date.getMonth() + 1).padStart(2, "0")}`;
+  console.log("current date/weekday being used:", date, getWeekday(date.getDay()));
 
-  console.log("current date being used:", date);
-  console.log("current weekday:", weekDayPt);
-
-  return `${returnHeaderString(details, weekDayPt, formattedDate)}
+  return `${returnHeaderString(details, getWeekday(date.getDay()), formattedDate)}
               ${returnFormattedMeals(breakfast, lunch, dinner, meals)}
               ${returnWarningString()}
               ${returnFooterString(details)}`.replace(/\n +/g, "\n");
