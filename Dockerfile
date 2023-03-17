@@ -1,21 +1,20 @@
-FROM node:18 as build
+FROM node:18.14.0-alpine as build
 
 WORKDIR /app
 
-COPY package.json app.ts tsconfig.json ./
+COPY package*.json tsconfig.json app.ts ./
 
-COPY /baileys_auth ./baileys_auth
+RUN npm install
 
 COPY /src ./src
 
-RUN npm install
-RUN npm cache clean -f
+COPY /baileys_auth ./baileys_auth
 
 RUN npm run build
 
-FROM node:18 as production
+FROM node:18.14.0-alpine as production
 
-WORKDIR /app
+WORKDIR /app/prod 
 
 COPY  --from=build app/dist ./
 COPY  --from=build app/node_modules ./node_modules

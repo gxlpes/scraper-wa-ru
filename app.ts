@@ -11,6 +11,7 @@ export const startApp = async () => {
   let sock = await connectToWhatsApp();
 
   for (const ru of arrayOfAttendedRu) {
+    console.log(arrayOfAttendedRu);
     console.log("-------------------- starting procedure for:", ru);
     const response = await getDataFromWebsite(ru);
     console.log("returned website", response?.status);
