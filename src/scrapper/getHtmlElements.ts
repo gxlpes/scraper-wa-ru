@@ -1,9 +1,9 @@
 import * as cheerio from "cheerio";
 import { extractContentFromHtml } from "./extractContentFromHtml";
 
-export const getHtmlElements = async (dataRu: string, ru: string) => {
+export const getHtmlElements = async (dataRu: string) => {
   const todayDate = new Date();
-  console.log("today date:", todayDate.getDate());
+  console.log("today date:", todayDate.getDate(), "/", todayDate.getMonth());
 
   try {
     const $ = cheerio.load(dataRu);

@@ -1,6 +1,5 @@
-import { Details, Meal, MenuData } from "../../types/DataTypes";
-import { findMealTitle } from "./findMealTitle";
-import { formatFood } from "./formatFood";
+import { Details, Meal } from "../types/DataFromWebsite";
+import { formatFood } from "./helpers/formatFood";
 
 export const returnWarningString = () => {
   return `🌱 - Indicado para veganos
@@ -31,7 +30,7 @@ export const returnFormattedMeals = (breakfast: Meal[], lunch: Meal[], dinner: M
   return mealData
     .map(({ name, meal }) => {
       const servingItems = formatFood(meal);
-      const mealTitle = findMealTitle(meals, name);
+      const mealTitle = name;
       if (!servingItems) return null;
       return `*${mealTitle?.trim()}*\n${servingItems}`;
     })

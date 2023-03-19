@@ -1,5 +1,5 @@
-import { Item } from "../../types/DataTypes";
-import { organizeIcons } from "./convertIcons";
+import { Item } from "../../types/DataFromWebsite";
+import { formatIcons } from "./formatIcons";
 import { formatSalad } from "./formatSalad";
 
 export const formatFood = (item: any) => {
@@ -10,7 +10,7 @@ export const formatFood = (item: any) => {
     if (obj.title.toLowerCase().includes("saladas")) {
       output += formatSalad(item);
     } else {
-      const itemIcons = obj.icons.map((icon: string) => organizeIcons(icon));
+      const itemIcons = obj.icons.map((icon: string) => formatIcons(icon));
       output += `${obj.title} ${itemIcons.join(" ")}\n`;
     }
   });

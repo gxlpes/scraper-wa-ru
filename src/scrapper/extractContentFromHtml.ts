@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import { convertRuToName, convertRuToUrl } from "../utils/convertRu";
+import { convertRuToUrl } from "../utils/convertRu";
 
 export const extractContentFromHtml = (menuFromDate: cheerio.Element, date: Date, ruName: string) => {
   const meal = ["CAFÉ DA MANHÃ", "ALMOÇO", "JANTAR"];

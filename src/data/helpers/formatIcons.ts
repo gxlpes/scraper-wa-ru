@@ -1,4 +1,4 @@
-export const organizeIcons = (url: string) => {
+export const formatIcons = (url: string) => {
   const iconMap: Record<string, string> = {
     vegano: "🌱",
     animal: "🥩",
