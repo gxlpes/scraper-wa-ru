@@ -27,12 +27,24 @@ export const returnFormattedMeals = (breakfast: Meal[], lunch: Meal[], dinner: M
     { name: "jantar", meal: dinner },
   ];
 
+  console.log(
+    mealData
+      .map(({ name, meal }) => {
+        const servingItems = formatFood(meal);
+        const mealTitle = name;
+        if (!servingItems) return null;
+        return `*${mealTitle?.trim().toLocaleUpperCase()}*\n${servingItems}`;
+      })
+      .filter((value) => value !== null)
+      .join("\n")
+  );
+
   return mealData
     .map(({ name, meal }) => {
       const servingItems = formatFood(meal);
       const mealTitle = name;
       if (!servingItems) return null;
-      return `*${mealTitle?.trim()}*\n${servingItems}`;
+      return `*${mealTitle?.trim().toLocaleUpperCase()}*\n${servingItems}`;
     })
     .filter((value) => value !== null)
     .join("\n");
