@@ -20,7 +20,9 @@ This app uses the BaileysAPI library to connect to my WhatsApp profile and send 
 
 The app is hosted on an Ubuntu Linux server physically located at my place. The entire application is started by a single Docker container built with necessary environment variables. Once again this container could be refactored to a multi-container system.
 
-<ul><b>Tech used</b>
+## Tech used
+
+<ul>
 <li>TypeScript</li>
 <li>BaileysAPI</li>
 <li>Cheerio</li>
