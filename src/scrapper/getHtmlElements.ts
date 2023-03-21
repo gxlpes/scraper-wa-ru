@@ -4,12 +4,17 @@ import { extractContentFromHtml } from "./extractContentFromHtml";
 
 export const getHtmlElements = async (dataRu: string) => {
   const todayDate = new Date();
-  console.log("today date:", todayDate.getDate(), "/", todayDate.getMonth());
+  console.log("today date:", todayDate.getDate());
 
   try {
     const $ = cheerio.load(dataRu);
     const ruName = $("#post h2").text().split("RU")[1]?.trim();
-    const $menuFromDate = $(`p:contains(${getWeekday(todayDate.getDay())})`)
+    const $elementsContainingText = $(`:contains("${getWeekday(todayDate.getDay())}")`);
+
+    const $menuFromDate = $elementsContainingText
+      .filter(function () {
+        return this.tagName === "figure" || this.tagName === "p";
+      })
       .first()
       .next()
       .get(0);
